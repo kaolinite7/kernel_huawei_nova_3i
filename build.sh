@@ -14,9 +14,9 @@ for i in ${binaries[@]};do
 	ln -sf $( which $i ) $dirroot/aarch64-linux-android-4.9/bin/$i
 done
 
-export ARCH=arm64 PATH="$PATH:$dirroot/arch64-linux-android-4.9/bin" CROSS_COMPILE=aarch64-linux-android-
+export ARCH=arm64 PATH="$dirroot/arch64-linux-android-4.9/bin:$PATH" CROSS_COMPILE=aarch64-linux-android-
 
-make ARCH=arm64 O=out $dirroot/arch/arm64/configs/merge_kirin710_defconfig
+make ARCH=arm64 O=out merge_kirin710_defconfig
 make ARCH=arm64 O=out -j$(nproc)
 
 cp $dirroot/out/arch/arm64/boot/Image.gz $dirroot/tools
