@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+
+which python2.7 1>/dev/null
+which gcc-9 1>/dev/null
+
+dirroot="$(dirname ${0})"
+cd $dirroot
+
+curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v0.9.2
+
+binaries=(cpp-9 gcc-9 gcc-ar-9 gcc-nm-9 gcc-ranlib-9 gcov-9 gcov-dump-9 gcov-tool-9 x86_64-linux-gnu-cpp-9 x86_64-linux-gnu-gcc-9 x86_64-linux-gnu-gcc-ar-9 x86_64-linux-gnu-gcc-nm-9 x86_64-linux-gnu-gcc-ranlib-9 x86_64-linux-gnu-gcov-9 x86_64-linux-gnu-gcov-dump-9 x86_64-linux-gnu-gcov-tool-9)
+for i in ${binaries[@]};do
+	ln -sf $( which $i ) $dirroot/aarch64-linux-android-4.9/bin/$i
+done
+
+export ARCH=arm64 PATH="$PATH:$dirroot/arch64-linux-android-4.9/bin" CROSS_COMPILE=aarch64-linux-android-
+
+make ARCH=arm64 O=out $dirroot/arch/arm64/configs/merge_kirin710_defconfig
+make ARCH=arm64 O=out -j$(nproc)
+
+cp $dirroot/out/arch/arm64/boot/Image.gz $dirroot/tools
+cd $dirroot/tools
+sed -i 's/--kernel kernel/--kernel Image.gz/' pack_kernelimage_cmd.sh
+./pack_kernelimage_cmd.sh
+mv kernel.img ..
