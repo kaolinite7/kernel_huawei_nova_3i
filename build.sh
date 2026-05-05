@@ -9,7 +9,7 @@ cd $dirroot
 
 curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v0.9.2
 
-binaries=(cpp-9 gcc-9 gcc-ar-9 gcc-nm-9 gcc-ranlib-9 gcov-9 gcov-dump-9 gcov-tool-9 x86_64-linux-gnu-cpp-9 x86_64-linux-gnu-gcc-9 x86_64-linux-gnu-gcc-ar-9 x86_64-linux-gnu-gcc-nm-9 x86_64-linux-gnu-gcc-ranlib-9 x86_64-linux-gnu-gcov-9 x86_64-linux-gnu-gcov-dump-9 x86_64-linux-gnu-gcov-tool-9)
+binaries=(python2.7 cpp-9 gcc-9 gcc-ar-9 gcc-nm-9 gcc-ranlib-9 gcov-9 gcov-dump-9 gcov-tool-9 x86_64-linux-gnu-cpp-9 x86_64-linux-gnu-gcc-9 x86_64-linux-gnu-gcc-ar-9 x86_64-linux-gnu-gcc-nm-9 x86_64-linux-gnu-gcc-ranlib-9 x86_64-linux-gnu-gcov-9 x86_64-linux-gnu-gcov-dump-9 x86_64-linux-gnu-gcov-tool-9)
 for i in ${binaries[@]};do
 	ln -sf $( which $i ) $dirroot/aarch64-linux-android-4.9/bin/$i
 done
