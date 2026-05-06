@@ -22,6 +22,6 @@ make ARCH=arm64 O=out -j$(nproc)
 
 cp out/arch/arm64/boot/Image.gz tools
 cd tools
-sed -i 's/--kernel kernel/--kernel Image.gz/' pack_kernelimage_cmd.sh
-pack_kernelimage_cmd.sh
+sed -i 's/--kernel kernel/--kernel Image.gz/' pack_kernerimage_cmd.sh
+./pack_kernerimage_cmd.sh
 mv kernel.img ..
