@@ -5,13 +5,13 @@ This repository provides the non-GKI integration of KernelSU v0.9.2 for the Huaw
 #### *Tested on latest EMUI 9.1.0.333*
 
 ## Installation
- Download `KernelSU_11682_INE_LX1.img` from the releases page. Alternatively build it yourself by procedure given below. Afterwards, flash it in fastboot mode using the following command:
+ Download `KernelSU_11872_INE_LX1.img` from the releases page. Alternatively build it yourself by procedure given below. Afterwards, flash it in fastboot mode using the following command:
 
 ```bash
-fastboot flash kernel ./KernelSU_11682_INE_LX1.img
+fastboot flash kernel ./KernelSU_11872_INE_LX1.img
 fastboot reboot
 ```
-After reboot install the corresponding [KernelSU Manager](https://github.com/tiann/KernelSU/releases/download/v0.9.2/KernelSU_v0.9.2_11682-release.apk).
+After reboot install the corresponding [KernelSU Manager](https://github.com/tiann/KernelSU/releases/download/v0.9.5/KernelSU_v0.9.5_11872-release.apk).
 
 ## Building ( x86_64 POSIX systems only )
 
@@ -26,12 +26,12 @@ After reboot install the corresponding [KernelSU Manager](https://github.com/tia
 
 ```bash
 git clone --recursive https://github.com/kaolinite7/kernel_huawei_nova_3i
-cd kernel_huawei_nova_3i
 ```
 
 ### Run the build script
 
 ```bash
+cd kernel_huawei_nova_3i
 ./build.sh
 ```
 Once Built, the `kernel.img` will be in kernel source root.
